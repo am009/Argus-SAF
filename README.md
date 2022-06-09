@@ -1,3 +1,20 @@
+
+## Docker usage
+
+1. mount folder containing apk into container, eg: `/root/apps`
+2. specify full path of the apk within container, eg: `/root/apps/app.apk`
+
+example:
+```
+docker run --rm -v C:\Users\xx\NativeFlowBench\:/root/apps/ warrenwjk/jnsaf:3.2.1 /root/apps/native_leak.apk
+```
+
+result files:
+1. `APK_NAME.pystdout.log` `APK_NAME.pystderr.log` from nativedroid
+2. `APK_NAME.jnstdout.log` `APK_NAME.jnstderr.log` from jnsaf server(java -jar Argus-saf.jar jnsaf ...)
+3. hex encoded folder and apk: intermediate files from jnsaf server.
+
+
 # Argus-SAF: Argus static analysis framework
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Build Status](https://travis-ci.org/arguslab/Argus-SAF.svg?branch=master)](https://travis-ci.org/arguslab/Argus-SAF)

@@ -11,7 +11,7 @@ install_nativedroid()
     protoc nativedroid/protobuf/summary.proto --python_out=.
     python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. nativedroid/protobuf/jnsaf_grpc.proto
     python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. nativedroid/protobuf/nativedroid_grpc.proto
-    python setup.py install
+    python setup.py develop
     cd ..
 }
 

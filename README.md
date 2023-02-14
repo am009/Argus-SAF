@@ -14,6 +14,32 @@ result files:
 2. `APK_NAME.jnstdout.log` `APK_NAME.jnstderr.log` from jnsaf server(java -jar Argus-saf.jar jnsaf ...)
 3. hex encoded folder and apk: intermediate files from jnsaf server.
 
+### timeouts
+
+1. `jnsaf\src\main\scala\org\argus\jnsaf\client\JNSafClient.scala:94` "loadBinary can not finish within 1 minutes" 90% apks will timeout here
+1. `jnsaf\src\main\scala\org\argus\jnsaf\client\JNSafClient.scala:129` "genSummary can not finish within 5 minutes"
+1. `.amandroid_stash/amandroid/config.ini` `[analysis] timeout = 2` timeout in minutes for each component **IMPORTANT**
+
+### useful commands
+
+```
+docker run -it --entrypoint /bin/bash --name jn-saf-commit warrenwjk/jnsaf:3.2.1
+
+docker cp "C:\Users\warren\d\2021\~Android-Native\ExistingTools\Argus-SAF\target\scala-2.12\argus-saf-3.2.1-SNAPSHOT-assembly.jar" jn-saf-commit:/root/Argus-SAF/binaries/argus-saf-3.2.1-SNAPSHOT-assembly.jar
+
+docker cp C:\Users\warren\d\2021\~Android-Native\ExistingTools\Argus-SAF\ss.txt jn-saf-commit:/root/.amandroid_stash/amandroid/taintAnalysis/sourceAndSinks/TaintSourcesAndSinks.txt
+
+docker commit -m "relax timeouts" jn-saf-commit jnsaftmp1
+
+docker commit -m "change TaintSourcesAndSinks" jn-saf-commit jnsaftmp
+```
+
+```
+docker image rm warrenwjk/jnsaf:3.2.1-fix1
+
+docker commit -m "relax timeouts" -c 'ENTRYPOINT ["/bin/bash", "/root/Argus-SAF/runTool.sh"]' jn-saf-commit warrenwjk/jnsaf:3.2.1-fix1
+```
+
 
 # Argus-SAF: Argus static analysis framework
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)

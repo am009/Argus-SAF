@@ -10,7 +10,7 @@ python /root/Argus-SAF/tools/scripts/start_nativedroid_server.py /tmp/binaries/ 
 nativedroid_pid=$!
 
 # start java server
-java -jar /root/Argus-SAF/binaries/argus-saf-3.2.1-SNAPSHOT-assembly.jar jnsaf $(dirname $1) 55001 localhost 50051 > >(tee $1.jnstdout.log) 2> >(tee $1.jnstderr.log >&2) &
+java -jar /root/Argus-SAF/binaries/argus-saf-3.2.1-SNAPSHOT-assembly.jar jnsaf /tmp/jn-saf/ 55001 localhost 50051 > >(tee $1.jnstdout.log) 2> >(tee $1.jnstderr.log >&2) &
 jnsaf_pid=$!
 
 sleep 5s

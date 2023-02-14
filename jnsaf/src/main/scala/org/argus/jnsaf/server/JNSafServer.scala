@@ -154,7 +154,7 @@ object JNSafServer extends GrpcServer {
       reporter.echo(TITLE,"Server taintAnalysis")
       val taintResult = performTaint(request.apkDigest, request.algo)
       val response = TaintAnalysisResponse(taintResult.map(_.toPb))
-      reporter.echo(TITLE, response.toProtoString)
+      reporter.echo(TITLE, response.toProtoString) // wjk: 打印污点信息
       Future.successful(response)
     }
 

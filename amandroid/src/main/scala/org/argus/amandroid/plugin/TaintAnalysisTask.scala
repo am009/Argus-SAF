@@ -97,7 +97,7 @@ case class TaintAnalysisTask(module: TaintAnalysisModules.Value, fileUris: ISet[
       val outputDir = FileUtil.toFile(outputDirUri)
       if (!outputDir.exists()) outputDir.mkdirs()
       val out = new PrintWriter(FileUtil.toFile(FileUtil.appendFileName(outputDirUri, "AppData.txt")))
-      out.print(appData.toString)
+      out.print(appData.toString) // wjk: 不开启jn-saf模式的时候的输出
       out.close()
     }
   }

@@ -65,7 +65,8 @@ val doNotPublishSettings = Seq(
 val publishSettings = Seq(
     test in assembly := {},
     assemblyMergeStrategy in assembly := {
-      case "META-INF/io.netty.versions.properties" => MergeStrategy.concat
+      // case PathList("META-INF", _*) => MergeStrategy.discard
+      case x if x.contains("io.netty.versions.properties") => MergeStrategy.concat
       case x =>
         val oldStrategy = (assemblyMergeStrategy in assembly).value
         oldStrategy(x)

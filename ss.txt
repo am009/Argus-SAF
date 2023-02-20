@@ -513,7 +513,8 @@ Ljava/io/FileOutputStream;.write:([B)V -> _SINK_
 Lcom/android/server/pm/PackageManagerService;.getInstrumentationInfo:(Landroid/content/ComponentName;I)Landroid/content/pm/InstrumentationInfo; -> _SOURCE_
 Lcom/android/internal/telephony/gsm/SmsCbHeader;.getDataCodingScheme:()I -> _SOURCE_
 Landroid/telephony/TelephonyManager;.getNetworkTypeName:(I)Ljava/lang/String; -> _SOURCE_
-Landroid/content/ContentResolver;.query:(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor; -> _BOTH_
+Landroid/content/ContentResolver;.query:(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor; -> _SOURCE_
+Landroid/content/ContentResolver;.query:(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor; -> _SINK_
 Landroid/preference/PreferenceManager;.getEditor:()Landroid/content/SharedPreferences$Editor; -> _SOURCE_
 Landroid/app/Activity;.startService:(Landroid/content/Intent;)Landroid/content/ComponentName; -> _SINK_ 
 Landroid/location/LocationManager;.getProvider:(Ljava/lang/String;)Landroid/location/LocationProvider; -> _SOURCE_
@@ -682,7 +683,8 @@ Landroid/app/AppGlobals;.getPackageManager:()Landroid/content/pm/IPackageManager
 Landroid/telephony/TelephonyManager;.getSubscriberId:()Ljava/lang/String; -> _SOURCE_
 Landroid/telephony/TelephonyManager;.getVoiceMessageCount:()I -> _SOURCE_
 Lcom/android/bluetooth/btservice/AdapterService;.getProfileConnectionState:(I)I -> _SOURCE_
-Landroid/content/ContentResolver;.query:(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Landroid/os/CancellationSignal;)Landroid/database/Cursor; -> _BOTH_
+Landroid/content/ContentResolver;.query:(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Landroid/os/CancellationSignal;)Landroid/database/Cursor; -> _SOURCE_
+Landroid/content/ContentResolver;.query:(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Landroid/os/CancellationSignal;)Landroid/database/Cursor; -> _SINK_
 Landroid/content/SharedPreferences$Editor;.putString:(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor; -> _SINK_ 
 Lcom/android/bluetooth/btservice/AdapterService$AdapterServiceBinder;.getRemoteUuids:(Landroid/bluetooth/BluetoothDevice;)[Landroid/os/ParcelUuid; -> _SOURCE_
 Ljava/net/URL;.<init>:(Ljava/net/URL;Ljava/lang/String;)V -> _SINK_ 

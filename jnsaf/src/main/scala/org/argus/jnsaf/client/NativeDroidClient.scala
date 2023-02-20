@@ -94,8 +94,8 @@ class NativeDroidClient(address: String, port: Int, apkDigest: String, reporter:
     }
     requestObserver.onCompleted()
     // Receiving happens asynchronously
-    if (!doneSignal.await(1, TimeUnit.MINUTES)) {
-      reporter.error(TITLE, "loadBinary can not finish within 1 minutes")
+    if (!doneSignal.await(9999, TimeUnit.MINUTES)) {
+      reporter.error(TITLE, "loadBinary can not finish within 9999 minutes")
     }
     loadedBinaries.get(fileUri)
   }
@@ -136,8 +136,8 @@ class NativeDroidClient(address: String, port: Int, apkDigest: String, reporter:
         responseOpt = Some(response)
         doneSignal.countDown()
       }
-      if (!doneSignal.await(1, TimeUnit.MINUTES)) {
-        reporter.error(TITLE, "genSummary can not finish within 1 minutes")
+      if (!doneSignal.await(20, TimeUnit.MINUTES)) {
+        reporter.error(TITLE, "genSummary can not finish within 20 minutes")
       }
       responseOpt match {
         case Some(response) =>
@@ -233,8 +233,8 @@ class NativeDroidClient(address: String, port: Int, apkDigest: String, reporter:
             responseOpt = Some(response)
             doneSignal.countDown()
           }
-          if (!doneSignal.await(5, TimeUnit.MINUTES)) {
-            reporter.error(TITLE, "genSummary can not finish within 5 minutes")
+          if (!doneSignal.await(20, TimeUnit.MINUTES)) {
+            reporter.error(TITLE, "genSummary can not finish within 20 minutes")
           }
           responseOpt match {
             case Some(response) =>
@@ -264,8 +264,8 @@ class NativeDroidClient(address: String, port: Int, apkDigest: String, reporter:
         responseOpt = Some(response)
         doneSignal.countDown()
       }
-      if (!doneSignal.await(5, TimeUnit.MINUTES)) {
-        reporter.error(TITLE, "genSummary can not finish within 5 minutes")
+      if (!doneSignal.await(20, TimeUnit.MINUTES)) {
+        reporter.error(TITLE, "genSummary can not finish within 20 minutes")
       }
       responseOpt match {
         case Some(response) =>

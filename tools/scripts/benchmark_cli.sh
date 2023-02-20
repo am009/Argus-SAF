@@ -24,7 +24,7 @@ icc_bench_submitter()
 
 native_flow_bench_submitter()
 {
-    java -jar $BASEDIR/../../binaries/argus-saf-3.2.1-SNAPSHOT-assembly.jar benchmark -a BOTTOM_UP $BASEDIR/../../benchmarks/NativeFlowHard localhost 55001 $BASEDIR/../../benchmarks/expected_nativeflow_bench.txt
+    java -jar $BASEDIR/../../binaries/argus-saf-3.2.1-SNAPSHOT-assembly.jar benchmark -a BOTTOM_UP $BASEDIR/../../benchmarks/NativeFlowBench localhost 55001 $BASEDIR/../../benchmarks/expected_nativeflow_bench.txt
 }
 
 MODE='ALL'

@@ -23,6 +23,8 @@ result files:
 ### useful commands
 
 ```
+tools/bin/sbt clean compile assembly
+
 docker run -it --entrypoint /bin/bash --name jn-saf-commit warrenwjk/jnsaf:3.2.1
 
 docker cp "C:\Users\warren\d\2021\~Android-Native\ExistingTools\Argus-SAF\target\scala-2.12\argus-saf-3.2.1-SNAPSHOT-assembly.jar" jn-saf-commit:/root/Argus-SAF/binaries/argus-saf-3.2.1-SNAPSHOT-assembly.jar
@@ -38,6 +40,8 @@ docker commit -m "change TaintSourcesAndSinks" jn-saf-commit jnsaftmp
 docker image rm warrenwjk/jnsaf:3.2.1-fix1
 
 docker commit -m "relax timeouts" -c 'ENTRYPOINT ["/bin/bash", "/root/Argus-SAF/runTool.sh"]' jn-saf-commit warrenwjk/jnsaf:3.2.1-fix1
+
+
 ```
 
 

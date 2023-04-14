@@ -58,6 +58,7 @@ class NativeDroidServer(NativeDroidServicer):
         :return: server_pb2.GenSummaryResponse
         """
         logger.info('Server GenSummary: %s', request)
+        start = time.time()
         depth = request.depth
         if depth is 0:
             return GenSummaryResponse()
@@ -74,6 +75,7 @@ class NativeDroidServer(NativeDroidServicer):
         taint_analysis_report, safsu_report, total_instructions = gen_summary(
             jnsaf_client, so_path, name_or_address, method_signature, arguments_str,
             self._native_ss_file, self._java_ss_file)
+        logger.info('Server GenSummary spent: %ss.', time.time()-start)
         return GenSummaryResponse(taint=taint_analysis_report, summary=safsu_report,
                                   analyzed_instructions=total_instructions)
 

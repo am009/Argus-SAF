@@ -758,6 +758,7 @@ class CallObjectMethod(NativeDroidSimProcedure):
                 method_name = annotation.method_name
                 method_signature = annotation.method_signature
                 method_full_signature = get_method_full_signature(class_name, method_name, method_signature)
+                nativedroid_logger.info('CallXXXMethod target signature: %s', method_full_signature)
                 num_args = count_arg_nums(method_signature)
                 jnsaf_client = self._analysis_center.get_jnsaf_client()
                 ssm = self._analysis_center.get_source_sink_manager()
@@ -841,6 +842,8 @@ class CallObjectMethod(NativeDroidSimProcedure):
                 return_annotation = icc_handle(self._analysis_center, class_name, method_name, return_annotation, self)
                 return_value = return_value.append_annotation(return_annotation)
                 return return_value
+            else:
+                nativedroid_logger.info('CallXXXMethod target not found! (%s)', self)
         jobject = JObject(self.project)
         return_value = claripy.BVV(jobject.ptr, self.project.arch.bits)
         return return_value
